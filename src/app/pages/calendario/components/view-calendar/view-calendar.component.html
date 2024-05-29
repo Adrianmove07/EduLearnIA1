@@ -1,0 +1,24 @@
+<div class="demo-app">
+  <div class="demo-app-main">
+
+    <div class="demo-app-bar">
+      <button (click)="handleWeekendsToggle()" *ngIf="calendarOptions.weekends else noShowWeekends"
+        class="btn btn-primary">Ocultar fines de Semanas</button>
+      <ng-template #noShowWeekends>
+        <button (click)="handleWeekendsToggle()" class="btn btn-success">Ver Fin de Semanas</button>
+      </ng-template>
+    </div>
+    <full-calendar #fullCalendar *ngIf="calendarVisible" [options]="calendarOptions">
+      <ng-template #eventContent let-arg>
+        <div>
+          <div>
+          <p>{{arg.timeText }} {{ arg.event.title}}</p>
+          </div>
+          <div>
+            <p>{{arg.event.extendedProps.descripcion}}</p>
+          </div>
+        </div>
+      </ng-template>
+    </full-calendar>
+  </div>
+</div>
